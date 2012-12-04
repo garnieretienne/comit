@@ -4,6 +4,7 @@ gem 'rails', '3.2.9'
 gem 'jquery-rails'
 gem 'sqlite3'
 gem 'haml'
+gem 'redcarpet'
 
 
 # Gems used only for assets and not required
