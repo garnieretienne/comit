@@ -1,0 +1,9 @@
+- content_for :title do
+  All blogs
+
+%h1 Blogs
+
+%ul
+  - @blogs.each do |blog|
+    %li
+      = link_to blog.name, url_for_subdomain(blog.subdomain)

@@ -1,13 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
-one:
-  name: MyString
-  subdomain: MyString
-  git: MyString
-  path: MyString
+blog:
+  name: Comit blog
+  subdomain: blog
+  git: https://github.com/comit/blog.comit.io.git
+  path: blog.comit.io
 
-two:
-  name: MyString
-  subdomain: MyString
-  git: MyString
-  path: MyString
+kurt:
+  name: kurt's blog
+  subdomain: kurt
+  git: https://github.com/etiennegarnier/kurt.yuweb.fr.git
+  path: kurt.yuweb.fr
