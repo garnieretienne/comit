@@ -13,4 +13,9 @@ class ApplicationController < ActionController::Base
     end
   end
   helper_method :url_for_subdomain
+
+  def path_to_blog_post(post)
+    return "/#{post.date.strftime("%Y/%m/%d")}/#{post.title.gsub /\s/, '_'}"
+  end
+  helper_method :path_to_blog_post
 end

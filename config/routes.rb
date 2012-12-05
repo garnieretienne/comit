@@ -1,6 +1,10 @@
 Comit::Application.routes.draw do
 
+  get "post/show"
+
   root to: 'blog#index'
+
+  match ':year/:month/:day/:title' => 'post#show'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

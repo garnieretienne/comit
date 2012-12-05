@@ -17,4 +17,5 @@ class BlogController < ApplicationController
     @blog  = current_blog
     @posts = @blog.posts
   end
+
 end

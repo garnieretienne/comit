@@ -12,7 +12,7 @@ class Post
   def valid?
     errors = false
 
-    # source
+    # title
     case @title
     when nil
       @errors[:title] = "can't be nil"

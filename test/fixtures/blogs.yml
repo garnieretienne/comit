@@ -11,3 +11,9 @@ kurt:
   subdomain: kurt
   git: https://github.com/etiennegarnier/kurt.yuweb.fr.git
   path: kurt.yuweb.fr
+
+test:
+  name: Testing
+  subdomain: test
+  git: https://github.com/comit/test.git
+  path: test
