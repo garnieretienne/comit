@@ -2,3 +2,8 @@
   = @blog.name
 
 %h1= @blog.name
+
+%ul
+  - @posts.each do |post|
+    %li
+      = post.title

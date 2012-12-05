@@ -59,4 +59,28 @@ class BlogTest < ActiveSupport::TestCase
     assert_equal another_blog.errors[:path][0], 'has already been taken'
   end
 
+  test "should list all blog post" do
+    blog = Blog.new(
+      name:      'Testing',
+      subdomain: 'testing',
+      git:       'https://github/comit/test.git',
+      path:      'test'
+    )
+    posts = blog.posts
+    assert_not_nil posts[0], 'No post found in the blog repository'
+  end
+
+  test "should not list non-correctly named post file" do
+    blog = Blog.new(
+      name:      'Testing',
+      subdomain: 'testing',
+      git:       'https://github/comit/test.git',
+      path:      'test'
+    )
+    posts = blog.posts
+    posts.each do |post|
+      assert_not_equal post.title, 'bad name scheme'
+    end
+  end
+
 end

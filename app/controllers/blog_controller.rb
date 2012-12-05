@@ -14,6 +14,7 @@ class BlogController < ApplicationController
   end
 
   def show
-    @blog = current_blog
+    @blog  = current_blog
+    @posts = @blog.posts
   end
 end
