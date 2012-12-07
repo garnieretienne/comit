@@ -4,6 +4,7 @@ Comit::Application.routes.draw do
 
   root to: 'blog#index'
 
+  match ':year/:month/:day/:title.md' => 'post#markdown'
   match ':year/:month/:day/:title' => 'post#show'
 
   # The priority is based upon order of creation:
