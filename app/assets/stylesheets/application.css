@@ -11,3 +11,21 @@
  *= require_self
  *= require_tree .
  */
+
+body {
+  font-family: source-sans-pro, serif;
+  margin: 0;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 0.6em;
+  height: 0.6em;
+}
+::-webkit-scrollbar-thumb {
+  background: #C2C2C2;
+  border-left: 2px solid white;
+  border-right: 2px solid white;
+  -webkit-border-radius: 6px;
+  border-radius: 6px;
+}

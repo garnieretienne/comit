@@ -15,4 +15,15 @@ class PostControllerTest < ActionController::TestCase
     assert_response :redirect
   end
 
+  test "should display the blog as a markdown plain text" do
+    @request.host = "test.comit.dev"
+    get :markdown, year: '2012', month: '12', day: '07', title: 'Simple'
+    assert_response :success
+    assert_equal @response.body, 'Hello World !
+=============
+
+Bonjour.
+'
+  end
+
 end

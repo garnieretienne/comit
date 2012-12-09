@@ -1,3 +1,14 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
+$(document).ready ->
+
+  # Display the 'return home' icon when user hover the blog title.
+  $('#header h1').hover ->
+    $('#return-home').fadeIn(50)
+  , ->
+    $('#return-home').fadeOut(50)
+
+  # Change the asterisk icon when user hover a blog title
+  $('.post-description').hover ->
+    $(this).parent().children('.asterisk').animate {'margin-right': '0.2em'}, 100
+  , ->
+    $(this).parent().children('.asterisk').animate {'margin-right': '0'}, 100 
+

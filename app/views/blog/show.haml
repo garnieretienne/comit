@@ -1,9 +1,14 @@
 - content_for :title do
   = @blog.name
 
-%h1= @blog.name
+= render 'layouts/header'
 
-%ul
-  - @posts.each do |post|
-    %li
-      = link_to post.title, path_to_blog_post(post)
+#blog
+  %ul#posts
+    - @posts.each do |post|
+      %li
+        .asterisk
+          ✱
+        .post-description
+          .title= link_to post.title, path_to_blog_post(post)
+          .date= post.date.strftime("%Y-%m-%d")

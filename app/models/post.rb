@@ -48,7 +48,8 @@ class Post
     extentions = {
       autolink: true,
       fenced_code_blocks: true,
-      space_after_headers: true
+      space_after_headers: true,
+      tables: true
     }
 
     markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML, extentions)
