@@ -31,6 +31,17 @@ class Blog < ActiveRecord::Base
     return nil
   end
 
+  def refresh
+    repo = Grit::Repo.new("#{Rails.root}/repositories/#{self.path}")
+    process = repo.git.pull({:process_info => true}, 'origin', 'master')
+    if process[0] != 0
+      logger.error "  Blog refresh error: #{process[2]}"
+      return false
+    else
+      return true
+    end
+  end
+
   private
 
   # Return the root tree of the Git repository (from the last commit on the master branch).

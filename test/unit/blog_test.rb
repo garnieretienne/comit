@@ -60,12 +60,6 @@ class BlogTest < ActiveSupport::TestCase
   end
 
   test "should list all blog post" do
-    # blog = Blog.new(
-    #   name:      'Testing',
-    #   subdomain: 'testing',
-    #   git:       'https://github/comit/test.git',
-    #   path:      'test'
-    # )
     blog = Blog.find_by_path 'test'
     posts = blog.posts
     assert_not_nil posts[0], 'No post found in the blog repository'
@@ -102,4 +96,13 @@ class BlogTest < ActiveSupport::TestCase
     assert_nil post, "Post found with random filename"
   end
 
+  test "should refresh a blog directory (git pull origin master)" do
+    blog = Blog.find_by_path 'test'
+    assert blog.refresh, 'Blog refresh had an error'
+  end
+
+  test "should NOT refresh a blog directory (git pull origin master failed)" do
+    blog = Blog.find_by_path 'erased'
+    assert !blog.refresh, 'Blog refresh had no error but sould do !'
+  end  
 end

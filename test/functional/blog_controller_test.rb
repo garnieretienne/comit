@@ -32,4 +32,22 @@ class BlogControllerTest < ActionController::TestCase
     assert_not_nil assigns(:blog), "No blog selected (not executing 'show' method ?)"
   end
 
+  test "should pull a git repo" do
+    @request.host = "test.comit.dev"
+    post :hook, token: blogs(:test).token
+    assert_response :success
+  end
+
+  test "should not pull an non-existing git repo" do
+    @request.host = "erased.comit.dev"
+    post :hook, token: blogs(:erased).token
+    assert_response :missing
+  end
+
+  test "should not pull a git repo if bad token is provided" do
+    @request.host = "test.comit.dev"
+    post :hook, token: 'badtoken'
+    assert_response :missing
+  end
+
 end

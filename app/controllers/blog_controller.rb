@@ -18,4 +18,17 @@ class BlogController < ApplicationController
     @posts = @blog.posts
   end
 
+  # Hook URL used to refresh a repo on demand
+  def hook
+    if current_blog
+      if params[:token] == current_blog.token
+        if current_blog.refresh
+          render nothing: true, status: 200
+          return
+        end
+      end
+    end
+    render nothing: true, status: 404
+  end
+
 end

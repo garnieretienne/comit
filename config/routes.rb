@@ -1,11 +1,9 @@
 Comit::Application.routes.draw do
 
-  get "post/show"
-
-  root to: 'blog#index'
-
-  match ':year/:month/:day/:title.md' => 'post#markdown'
-  match ':year/:month/:day/:title' => 'post#show'
+  match ':year/:month/:day/:title.md' => 'post#markdown'            # Post in Mardown
+  match ':year/:month/:day/:title'    => 'post#show'                # Post in HTML
+  match 'hook/:token'                 => 'blog#hook', :via => :post # Hook for Git repository pull
+  root to: 'blog#index'                                             # Blog index
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
