@@ -20,3 +20,6 @@
 # Ignore cloned repositories
 /repositories/*
 !/repositories/.gitme
+
+# Ignore start script with credentials
+start_server_dev

@@ -6,7 +6,7 @@ $custom-color: #E4681B;
   color: white;
   padding: 0.4em;
   text-align: center;
-  margin-bottom: 4em;
+  margin-bottom: 2em;
   border-bottom: 6px solid $custom-color;
   
   #return-home {
@@ -31,12 +31,37 @@ $custom-color: #E4681B;
       text-decoration: none;
     }
   }
+
+  #sign-in {
+    float: right;
+    margin-right: 1em;
+    margin-left: 2em;
+    margin-top: 0.6em;
+    font-style: italic;
+    a, a:link, a:visited, a:active, {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+  }
 }
 
 #blog, #network {
   max-width: 600px;
   margin: auto;
   padding: 1em;
+
+  #headline {
+    b {
+      color: $custom-color;
+    }
+    font-size: 2em;
+    text-align: center;
+    margin-bottom: 2em;
+  }
 
   #posts, #blogs {
     list-style-type: none;

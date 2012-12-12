@@ -6,6 +6,7 @@ gem 'sqlite3'
 gem 'haml'
 gem 'redcarpet'
 gem 'grit'
+gem 'omniauth-github'
 
 # Gems used only for assets and not required
 # in production environments by default.

@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  provider: github
+  uid: 12345
+  name: Curt Cobain
+
+two:
+  provider: github
+  uid: 12346
+  name: Jacques Brel
