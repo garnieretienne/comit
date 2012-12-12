@@ -6,7 +6,7 @@ class PostControllerTest < ActionController::TestCase
     @request.host = "test.comit.dev"
     get :show, year: '2012', month: '12', day: '05', title: 'Welcome_to_Comit'
     assert_response :success
-    assert_select 'title', "Welcome to Comit", 'Title of the post not displayed'
+    assert_select 'title', "Welcome to Comit - Testing", 'Title of the post not displayed'
   end
 
   test "should redirect on bad url" do

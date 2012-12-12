@@ -1,5 +1,5 @@
-$custom-color: #3AE6D3;
-// $custom-color: #E4681B;
+// $custom-color: #3AE6D3;
+$custom-color: #E4681B;
 
 #header {
   background-color: black;
@@ -33,12 +33,12 @@ $custom-color: #3AE6D3;
   }
 }
 
-#blog {
+#blog, #network {
   max-width: 600px;
   margin: auto;
   padding: 1em;
 
-  #posts {
+  #posts, #blogs {
     list-style-type: none;
     padding: 0;
     margin: 0;
@@ -50,6 +50,20 @@ $custom-color: #3AE6D3;
 
     li {
       margin-bottom: 1.6em;
+      .typewriter {
+        svg {
+          path {
+            fill: $custom-color;
+          }
+          width: 100%;
+          height: 100%;
+        }
+        width: 1.4em;
+        height: 1.6em;
+        float: left;
+        padding-right: 0.9em;
+        padding-top: 0.3em;
+      }
       .asterisk {
         color: $custom-color;
         float: left;
@@ -57,7 +71,7 @@ $custom-color: #3AE6D3;
         overflow: hidden;
         font-size: 1.6em;
       }
-      .post-description {
+      .post-description, .blog-description {
         margin-left: 1.4em;
         .title {
           text-transform: uppercase;

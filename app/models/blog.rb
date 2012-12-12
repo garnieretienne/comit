@@ -15,7 +15,7 @@ class Blog < ActiveRecord::Base
         end
       end
     end
-    return posts
+    return posts.reverse!
   end
 
   def find_post(filename)
@@ -46,9 +46,13 @@ class Blog < ActiveRecord::Base
 
   # Build a post object using a blob git object. 
   def get_post(blob)
-    name  = /(?<year>\d\d\d\d)-(?<month>\d\d)-(?<day>\d\d)-(?<title>\S*).md/.match(blob.name)
+    name  = /(?<year>\d\d\d\d)-(?<month>0[0-9]|1[0-2])-(?<day>[0-2][0-9]|3[01])-(?<title>\S*).(md|markdown)/.match(blob.name)
     if name
-      date   = Date.new name[:year].to_i, name[:month].to_i, name[:day].to_i
+      begin
+        date = Date.new name[:year].to_i, name[:month].to_i, name[:day].to_i
+      rescue
+        return nil
+      end
       title  = name[:title].gsub /_/, ' '
       source = blob.data
       return Post.new(title: title, date: date, source: source)
