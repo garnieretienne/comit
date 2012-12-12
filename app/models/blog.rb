@@ -1,5 +1,5 @@
 class Blog < ActiveRecord::Base
-  attr_accessible :git, :name, :path, :subdomain
+  attr_accessible :git, :name, :path, :subdomain, :token
   validates :git, :name, :path, :subdomain, presence: true
   validates :git, :path, :subdomain, uniqueness: true
 
@@ -65,7 +65,7 @@ class Blog < ActiveRecord::Base
         return nil
       end
       title  = name[:title].gsub /_/, ' '
-      source = blob.data
+      source = blob.data.force_encoding("UTF-8")
       return Post.new(title: title, date: date, source: source)
     end
     return nil
