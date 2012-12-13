@@ -6,9 +6,9 @@
 #blog
   %ul#posts
     - @posts.each do |post|
-      %li
+      %li.post
         .asterisk
           ✱
-        .post-description
-          .title= link_to post.title, path_to_blog_post(post)
+        %a.post-description{href: path_to_blog_post(post)}
+          .title= post.title
           .date= post.date.strftime("%Y-%m-%d")

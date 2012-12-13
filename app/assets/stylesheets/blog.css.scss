@@ -92,12 +92,15 @@ $custom-color: #E4681B;
       .asterisk {
         color: $custom-color;
         float: left;
-        width: 1.4em;
+        width: 34px;
+        text-align: center;
         overflow: hidden;
         font-size: 1.6em;
       }
       .post-description, .blog-description {
-        margin-left: 1.4em;
+        display: block;
+        margin-left: 34px;
+        padding-left: 1em;
         .title {
           text-transform: uppercase;
           font-family: passion-one, serif;
