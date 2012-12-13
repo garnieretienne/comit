@@ -1,0 +1,31 @@
+- content_for :title do
+  = "Comit Dashboard - #{@user.name}"
+
+#header
+  #sign-in
+    Signed in as
+    = link_to current_user.name, user_show_path
+    = ". "
+    = link_to "Sign out", signout_path
+  %h1 Comit Dashboard
+
+#dashboard
+  %p
+    Hi 
+    %b= "#{@user.name}, "
+    %br
+    You have 
+    %b= @user.blogs.count
+    blogs hosted on Comit.
+
+  - @user.blogs.each do |blog|
+    %h1= blog.name
+    %dl
+      %dt url
+      %dd= link_to url_for_subdomain(blog.subdomain), url_for_subdomain(blog.subdomain)
+      %dt git
+      %dd= blog.git
+      %dt name
+      %dd= blog.name
+
+
