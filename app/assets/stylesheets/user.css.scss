@@ -1,3 +1,30 @@
-// Place all the styles related to the user controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+@import "colors";
+@import "typography";
+
+#dashboard {
+  max-width: 600px;
+  margin: auto;
+  padding: 1em;
+
+  a {
+    border-bottom:1px dotted black;
+  }
+
+  header {
+    p {
+      text-align: center;
+      margin-top: 0;
+    }
+  }
+
+  .post {
+    padding: 1em;
+    margin-bottom: 2em;
+    background-color: lighten($ligth-grey, 6%);
+    border: 2px solid $ligth-grey;
+    h1 {
+      margin-top: 0;
+      border-bottom: 1px solid $ligth-grey;
+    }
+  }
+}

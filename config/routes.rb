@@ -5,7 +5,7 @@ Comit::Application.routes.draw do
   match    'hook/:token'                 => 'blog#hook',      :via => :post # Hook for Git repository pull
   match    'auth/:provider/callback'     => 'session#create'                # Authentication callback for omniauth
   match    'signout'                     => 'session#destroy'               # Sign out
-  get      'user/show'                                                      # User profile
+  match    'user/dashboard'              => 'user#show'                     # User profile
   root to: 'blog#index'                                                     # Blog index
 
   # The priority is based upon order of creation:

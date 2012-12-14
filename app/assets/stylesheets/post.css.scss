@@ -1,108 +1,20 @@
-// $custom-color: #3AE6D3;
-$custom-color: #E4681B;
+@import "colors";
+@import "typography";
 
 article {
-  max-width: 600px;
+  max-width: 480px;
   margin: auto;
   padding: 1em;
   margin-bottom: 4em;
 
-  h1, h2, h3, h4, h5 {
-    color: #424242;
-    margin-top: 2em;
-    margin-bottom: 1.4em;
-  }
-  
-  h1 {
-    font-size: 1.2em;
-  }
-
-  h2, h3, h4, h5, h6 {
-    font-size: 1.2em;
-    font-weight: normal;
-  }
-
-  pre {
-    padding: 1.4em;
-    overflow: auto;
-    background-color: #F5F5F5;
-    border: 1px solid #868686;
-  }
-
-  code {
-    background-color: #F5F5F5; 
-  }
-
-  p {
-    text-align: justify;
-    text-justify: inter-word;
-    color: #565656;
-  }
-
-  img {
-    display: block;
-    margin: auto;
-    max-width: 100%;
-    margin-top: 1em;
-    margin-bottom: 1em;
-  }
-
-  a, a:link, a:visited, a:active, a:hover {
-    color: black;
-    text-decoration: none;
-    border-bottom:1px dotted #565656;
-  }
-
-  hr {
-    border: 0;
-    border-bottom: 1px dashed #565656;
-    background: transparent;
-    margin-top: 3em;
-    margin-bottom: 3em;
-  }
-
-  table {
-    border-spacing: 0px;
-    border-collapse: collapse;
-    margin: auto;
-    margin-bottom: 1em;
-    border: 1px solid #CACACA;
-    tr {
-      border-bottom: 1px solid #F1F1F1;
-      td {
-        color: #565656;
-        padding: 0.4em 1em;
-        border-right: 1px solid #F1F1F1;
-      }
-      td:last-child {
-        border-right: 0; 
-      }
-      th {
-        padding: 0.4em 1em;
-        border-bottom: 1px solid #CACACA;
-        border-right: 1px solid #F1F1F1;
-        font-weight: bold;
-        text-align: left;
-      }
-      th:last-child {
-        border-right: 0; 
-      }
-    }
-    tr:last-child {
-      border-bottom: 0;
-    }
-    tr:hover > td {
-      cursor: pointer;
-      background-color: #F1F1F1;
-    }
-  }
-
   header {
-  margin-bottom: 2em;
-  text-transform: uppercase;
+    margin-bottom: 2em;
+    text-transform: uppercase;
+
     h1, p {
       margin: 0px;
     }
+
     svg {
       width: 1em;
       height: 1em;
@@ -113,36 +25,21 @@ article {
       line-height: 100%;
       vertical-align: -20%;
     }
+
     h1 {
-      color: black;
+      color: $black;
       font-size: 2em;
-      font-family: passion-one, serif;
+      font-family: $title;
       line-height:100%;
-      border-bottom: 0
+      font-weight: normal;
     }
-    p {
-      color: #5A5A5A;
+
+    #info {
+      color: $grey;
     }
   }
 
-  blockquote {
-    font-style: italic;
-    p {
-      margin-bottom: 1em;
-      border-left: 1px solid $custom-color;
-      padding-left: 1em;
-    }
-    cite:before {
-      content: "― ";
-      margin-right: 0.4em;
-    }
-    cite {
-      margin-left: 1em;
-    }
+  a {
+    border-bottom:1px dotted $dark-grey;
   }
-
-  ul {
-    color: #565656;
-  }
-
 }

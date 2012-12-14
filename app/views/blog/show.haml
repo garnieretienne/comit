@@ -6,7 +6,7 @@
 #blog
   %ul#posts
     - @posts.each do |post|
-      %li.post
+      %li
         .asterisk
           ✱
         %a.post-description{href: path_to_blog_post(post)}
