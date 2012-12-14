@@ -8,7 +8,7 @@
   height: 0.6em;
 }
 ::-webkit-scrollbar-thumb {
-  background: $dark-grey;
+  background: $black;
   border-left: 2px solid $white;
   border-right: 2px solid $white;
   -webkit-border-radius: 6px;
@@ -147,6 +147,7 @@ body {
     
     dd {
       margin-left: 1em;
+      margin-bottom: 1em;
     }
   }
 
