@@ -1,4 +1,5 @@
 class BlogController < ApplicationController
+
   def index
     if current_blog
       show
@@ -36,11 +37,8 @@ class BlogController < ApplicationController
     @blog.user = current_user
     @blog.path = File.basename(params[:blog][:git]) if params[:blog][:git]
     if @blog.save
-      # Flash: OK
       redirect_to user_dashboard_path
     else
-      # Flash: Errors
-      # List errors (render instead of redirect ?)
       @display_form = 'display-form'
       render 'user/show'
     end

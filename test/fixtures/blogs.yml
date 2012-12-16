@@ -6,6 +6,7 @@ blog:
   git: https://github.com/comit/blog.comit.io.git
   path: blog.comit.io
   token: T0W7LIcrJtTeFE4I2ikZ8Q
+  user: one
 
 kurt:
   name: kurt's blog
@@ -13,17 +14,20 @@ kurt:
   git: https://github.com/etiennegarnier/kurt.yuweb.fr.git
   path: kurt.yuweb.fr
   token: T0W7LIcrJtTeFE4I2ikL7Q
+  user: one
 
 test:
   name: Testing
   subdomain: test
-  git: git@github.com:garnieretienne/comit-test.git
+  git: <%= Rails.root %>/tmp/test
   path: test
   token: T0W7LIcrJtTeFE4I2ikZ7Q
+  user: one
 
 erased:
   name: Erased Git repository
   subdomain: erased
-  git: git@github.com:garnieretienne/erased.git
+  git: <%= Rails.root %>/tmp/erased
   path: erased
   token: BAW7LIcrJtTeFE4I2ikZ7Q
+  user: one

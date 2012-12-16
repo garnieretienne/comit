@@ -38,7 +38,7 @@
           %dd
             = f.text_field :subdomain
             = ".#{request.host}"
-          %dt= f.label :git, 'Git'
+          %dt= f.label :git, 'Git URL'
           %dd= f.text_field :git
       = f.submit "Put online !"
 
@@ -48,7 +48,10 @@
       %dl
         %dt URL
         %dd= link_to url_for_subdomain(blog.subdomain), url_for_subdomain(blog.subdomain)
-        %dt Git
+        %dt Git URL
         %dd= link_to blog.git, blog.git
+        %dt Hook URL (POST)
+        %dd 
+          %code=url_for_token(blog.token)
 
 

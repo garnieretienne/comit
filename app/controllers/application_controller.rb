@@ -20,6 +20,15 @@ class ApplicationController < ActionController::Base
   end
   helper_method :url_for_subdomain
 
+  def url_for_token(token)
+    if request.port
+      return "http://#{request.domain}:#{request.port}/hook/#{token}"
+    else
+      return "http://#{request.domain}/hook/#{token}"
+    end
+  end
+  helper_method :url_for_token
+
   def path_to_blog_post(post)
     return "/#{post.date.strftime("%Y/%m/%d")}/#{post.title.gsub /\s/, '_'}"
   end

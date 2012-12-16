@@ -50,4 +50,30 @@ class BlogControllerTest < ActionController::TestCase
     assert_response :missing
   end
 
+  test "should create a blog" do
+    session[:user_id] = users(:one).id # Authenticated
+    @request.host = "comit.dev"
+    assert_difference('Blog.count', 1) do
+      post :create, blog: {
+        name:      'New Blog',
+        subdomain: 'newblog',
+        git:       "#{Rails.root}/tmp/comit-test"
+      }
+      assert_response :redirect
+    end
+  end
+
+  test "should NOT create a blog" do
+    session[:user_id] = users(:one).id # Authenticated
+    @request.host = "comit.dev"
+    assert_difference('Blog.count', 0) do
+      post :create, blog: {
+        name:      'New Blog',
+        subdomain: 'newblog',
+        git:       "nothing"
+      }
+      assert_response :success
+    end
+  end
+
 end

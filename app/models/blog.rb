@@ -1,8 +1,12 @@
 class Blog < ActiveRecord::Base
   belongs_to :user
-  attr_accessible :git, :name, :path, :subdomain, :token
+  attr_accessible :git, :name, :subdomain
   validates :git, :name, :subdomain, :user_id, presence: true
-  validates :git, :path, :subdomain, uniqueness: true
+  validates :git, :subdomain, uniqueness: true
+  validates :git, git_url: true
+
+  before_save :generate_path, :generate_token
+  before_validation :downcase_subdomain
 
   def posts
     posts = []
@@ -70,6 +74,21 @@ class Blog < ActiveRecord::Base
       return Post.new(title: title, date: date, source: source)
     end
     return nil
+  end
+
+  # Generate a unique path using timestamp and Git URL basename
+  def generate_path
+    self.path = "#{Time.new.to_i}_#{File.basename(self.git)}"
+  end
+
+  # Generate a unique token used to refresh the git repo
+  def generate_token
+    self.token ||= SecureRandom.urlsafe_base64
+  end
+
+  # Ensure all subdomains are downcased
+  def downcase_subdomain
+    self.subdomain = self.subdomain.downcase if self.subdomain
   end
 
 end
