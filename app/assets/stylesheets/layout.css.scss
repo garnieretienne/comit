@@ -151,6 +151,7 @@ body {
     }
   }
 
+  // Header bar
   #header {
     background-color: $black;
     color: $white;
@@ -200,6 +201,38 @@ body {
       a:hover {
         text-decoration: underline;
       }
+    }
+  }
+
+  // Menus
+  .menu {
+    padding: 0;
+    margin: 0;
+    margin-bottom: 1em;
+    list-style-type: none;
+    li:before {
+      content: "\00BB \0020";
+      color: $custom-color;
+      font-weight: bold;
+    }
+    li {
+      a {
+        color: $grey;
+        border-bottom: 0 !important;
+      }
+    }
+  }
+
+  // Errors list
+  .errors {
+    padding: 0;
+    margin: 0;
+    margin-left: 2em;
+    margin-bottom: 1em;
+    color: $grey;
+    list-style-position: inside;
+    b {
+      font-weight: bold;
     }
   }
 }

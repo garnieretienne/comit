@@ -17,7 +17,7 @@
     }
   }
 
-  .post {
+  .blog, #form-box {
     padding: 1em;
     margin-bottom: 2em;
     background-color: lighten($ligth-grey, 6%);
@@ -27,4 +27,73 @@
       border-bottom: 1px solid $ligth-grey;
     }
   }
+
+  #new-blog {
+    margin-bottom: 2em;
+    display: none;
+
+    #close-form-builder {
+      color: $grey;
+      display: block;
+      float: right;
+      margin-bottom: 1em;
+    }
+    #close-form-builder:before {
+      content: "☓ ";
+    }
+
+    .field_with_errors {
+      display: inline;
+      label {
+        color: $red;
+      }
+    }
+
+    input[type='text'] {
+      font-style: italic;
+      font-family: $base;
+      color: $grey;
+      font-size: 1em;
+      background-color: transparent;
+      border: 0;
+      border-bottom: 1px dashed darken($ligth-grey, 10%);
+    }
+    input[type='text']:focus { 
+      outline: none;
+      background-color: lighten($ligth-grey, 2%);
+    }
+
+    input[type='submit'] {
+      font-family: $base;
+      color: $grey;
+      font-size: 1em;
+      font-weight: bold;
+      display: block;
+      margin: auto;
+      margin-top: -1em;
+      background-color: lighten($ligth-grey, 6%);;
+      border: 2px solid $ligth-grey;
+      padding: 0.4em;
+    }
+   
+    #blog_git {
+      width: 100%;
+    }
+   
+    #blog_subdomain {
+      width: 50%;
+    }
+   
+    #blog_name {
+      font-weight: bold;
+      width: 100%;
+      border-bottom: 0;
+    }
+
+  }
+
+  #new-blog.display-form {
+    display: block;
+  }
+
 }

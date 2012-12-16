@@ -1,5 +1,5 @@
 - content_for :title do
-  = "Comit Dashboard - #{@user.name}"
+  = "Comit Dashboard - #{current_user.name}"
 
 #header
   #sign-in
@@ -13,21 +13,42 @@
   %header
     %p
       Hi 
-      %b= "#{@user.name}, "
+      %b= "#{current_user.name}, "
       You have 
-      %b= @user.blogs.count
+      %b= current_user.blogs.count
       blogs hosted on Comit.
 
-  - @user.blogs.each do |blog|
-    .post
+  %ul.menu
+    %li>
+      %a#build-form{href: '#'} Build on a new blog
+
+  #new-blog{class: @display_form || ''}
+    - if !@blog.errors.empty?
+      %ul.errors
+        - @blog.errors.each do |attr, error|
+          %li<
+            %b= attr.capitalize
+            = " #{error}"
+    = form_for @blog, url: {controller: 'blog', action: 'create' } do |f|
+      #form-box
+        %h1
+          = f.text_field :name, value: @blog.name || 'Blog Title'
+        %dl
+          %dt= f.label :subdomain, 'URL'
+          %dd
+            = f.text_field :subdomain
+            = ".#{request.host}"
+          %dt= f.label :git, 'Git'
+          %dd= f.text_field :git
+      = f.submit "Put online !"
+
+  - current_user.blogs.order("created_at DESC").each do |blog|
+    .blog
       %h1= blog.name
       %dl
-        %dt url
+        %dt URL
         %dd= link_to url_for_subdomain(blog.subdomain), url_for_subdomain(blog.subdomain)
-        %dt git
+        %dt Git
         %dd= link_to blog.git, blog.git
-        %dt name
-        %dd
-          %em= blog.name
 
 

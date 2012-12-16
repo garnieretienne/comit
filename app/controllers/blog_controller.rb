@@ -31,4 +31,19 @@ class BlogController < ApplicationController
     render nothing: true, status: 404
   end
 
+  def create
+    @blog = Blog.new(params[:blog])
+    @blog.user = current_user
+    @blog.path = File.basename(params[:blog][:git]) if params[:blog][:git]
+    if @blog.save
+      # Flash: OK
+      redirect_to user_dashboard_path
+    else
+      # Flash: Errors
+      # List errors (render instead of redirect ?)
+      @display_form = 'display-form'
+      render 'user/show'
+    end
+  end
+
 end

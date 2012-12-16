@@ -1,12 +1,13 @@
 Comit::Application.routes.draw do
 
-  match    ':year/:month/:day/:title.md' => 'post#markdown'                 # Post in Mardown
-  match    ':year/:month/:day/:title'    => 'post#show'                     # Post in HTML
-  match    'hook/:token'                 => 'blog#hook',      :via => :post # Hook for Git repository pull
-  match    'auth/:provider/callback'     => 'session#create'                # Authentication callback for omniauth
-  match    'signout'                     => 'session#destroy'               # Sign out
-  match    'user/dashboard'              => 'user#show'                     # User profile
-  root to: 'blog#index'                                                     # Blog index
+  match     ':year/:month/:day/:title.md' => 'post#markdown'                 # Post in Mardown
+  match     ':year/:month/:day/:title'    => 'post#show'                     # Post in HTML
+  match     'hook/:token'                 => 'blog#hook',      :via => :post # Hook for Git repository pull
+  match     'auth/:provider/callback'     => 'session#create'                # Authentication callback for omniauth
+  match     'signout'                     => 'session#destroy'               # Sign out
+  match     'user/dashboard'              => 'user#show'                     # User profile
+  resources :blog,                        only: :create                      # Blog management
+  root to:  'blog#index'                                                     # Blog index
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

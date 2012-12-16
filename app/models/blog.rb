@@ -1,7 +1,7 @@
 class Blog < ActiveRecord::Base
   belongs_to :user
   attr_accessible :git, :name, :path, :subdomain, :token
-  validates :git, :name, :path, :subdomain, presence: true
+  validates :git, :name, :subdomain, :user_id, presence: true
   validates :git, :path, :subdomain, uniqueness: true
 
   def posts

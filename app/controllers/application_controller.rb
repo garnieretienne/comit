@@ -7,8 +7,9 @@ class ApplicationController < ActionController::Base
   helper_method :current_user
 
   def current_blog
-    Blog.find_by_subdomain request.subdomain
+    @current_blog ||= Blog.find_by_subdomain request.subdomain
   end
+  helper_method :current_blog
 
   def url_for_subdomain(subdomain)
     if request.port

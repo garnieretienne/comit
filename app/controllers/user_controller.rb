@@ -3,7 +3,7 @@ class UserController < ApplicationController
   before_filter :authenticated?
   
   def show
-    @user = current_user
+    @blog = Blog.new
   end
 
   protected
