@@ -1,9 +1,17 @@
 class BlogController < ApplicationController
 
   def index
+
+    # Display blog
     if current_blog
       show
       render action: :show
+      
+    # Blog do not exist yet, redirect to welcome page
+    elsif request.subdomain != ""
+      redirect_to "http://#{request.domain}#{if request.port then ":"+request.port.to_s end}"
+
+    # Welcome page
     else
       all
       render action: :all
@@ -15,8 +23,7 @@ class BlogController < ApplicationController
   end
 
   def show
-    @blog  = current_blog
-    @posts = @blog.posts
+    @posts = current_blog.posts
   end
 
   # Hook URL used to refresh a repo on demand
