@@ -101,4 +101,11 @@ class BlogTest < ActiveSupport::TestCase
     assert !blog.refresh, 'Blog refresh had no error but sould do !'
   end
 
+  test "should tell if a blog is ready or not (repo not cloned yet)" do
+    blog = Blog.find_by_path 'test'
+    assert blog.ready?, "Cloned blog not marked as ready"
+    @blog.save
+    assert !@blog.ready?, "Non cloned blog marked as ready"
+  end
+
 end

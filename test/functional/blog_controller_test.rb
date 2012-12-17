@@ -23,7 +23,7 @@ class BlogControllerTest < ActionController::TestCase
   end
 
   test "should display the related blog if subdomain" do
-    @request.host = "blog.comit.dev"
+    @request.host = "test.comit.dev"
     get :index
     assert_response :success
     assert_nil assigns(:blogs), "Blog list available (not executing 'show' method ?)"

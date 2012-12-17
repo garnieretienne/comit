@@ -47,6 +47,14 @@ class Blog < ActiveRecord::Base
     end
   end
 
+  def ready?
+    if self.valid?
+      File.exist?("#{Rails.root}/repositories/#{self.path}")
+    else
+      return false
+    end
+  end
+
   private
 
   # Return the root tree of the Git repository (from the last commit on the master branch).

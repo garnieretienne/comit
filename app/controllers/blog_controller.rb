@@ -4,17 +4,18 @@ class BlogController < ApplicationController
 
     # Display blog
     if current_blog
+      render :not_ready and return if !current_blog.ready? # Repository is not cloned yet
       show
-      render action: :show
+      render action: :show and return
       
-    # Blog do not exist yet, redirect to welcome page
+    # Blog do not exist, redirect to welcome page
     elsif request.subdomain != ""
-      redirect_to "http://#{request.domain}#{if request.port then ":"+request.port.to_s end}"
+      redirect_to "http://#{request.domain}#{if request.port then ":"+request.port.to_s end}" and return
 
     # Welcome page
     else
       all
-      render action: :all
+      render action: :all and return
     end
   end
 
