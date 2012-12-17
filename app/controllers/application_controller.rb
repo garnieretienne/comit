@@ -11,6 +11,18 @@ class ApplicationController < ActionController::Base
   end
   helper_method :current_blog
 
+  def authenticated?
+    if !current_user
+      redirect_to root_url
+    end
+  end
+
+  def blog_specified?
+    if !current_blog
+      redirect_to "http://#{request.domain}#{if request.port then ":"+request.port.to_s end}" and return
+    end
+  end
+
   def url_for_subdomain(subdomain)
     if request.port
       return "http://#{subdomain}.#{request.domain}:#{request.port}"

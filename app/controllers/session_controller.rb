@@ -1,5 +1,7 @@
 class SessionController < ApplicationController
 
+  before_filter :authenticated?, except: [:create]
+
   def create
     user = User.from_omniauth(request.env["omniauth.auth"])
     session[:user_id] = user.id

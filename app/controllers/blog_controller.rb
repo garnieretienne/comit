@@ -1,5 +1,8 @@
 class BlogController < ApplicationController
 
+  before_filter :authenticated?, except: [:index, :all, :show, :hook]
+
+  # Root URL
   def index
 
     # Display blog
