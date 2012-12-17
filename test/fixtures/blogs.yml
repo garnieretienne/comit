@@ -31,3 +31,11 @@ erased:
   path: erased
   token: BAW7LIcrJtTeFE4I2ikZ7Q
   user: one
+
+not_ready:
+  name: Not ready blog
+  subdomain: notready
+  git: <%= Rails.root %>/tmp/erased
+  path: notready
+  token: BAW7LIcrJtTeFE4I2uIhg
+  user: one

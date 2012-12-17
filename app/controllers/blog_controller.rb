@@ -17,6 +17,7 @@ class BlogController < ApplicationController
       all
       render action: :all and return
     end
+
   end
 
   def all
@@ -43,7 +44,6 @@ class BlogController < ApplicationController
   def create
     @blog = Blog.new(params[:blog])
     @blog.user = current_user
-    @blog.path = File.basename(params[:blog][:git]) if params[:blog][:git]
     if @blog.save
       GitCloneWorker.perform_async(@blog.git, "#{Rails.root}/repositories/#{@blog.path}")
       redirect_to user_dashboard_path
@@ -51,6 +51,40 @@ class BlogController < ApplicationController
       @display_form = 'display-form'
       render 'user/show'
     end
+  end
+
+  def edit
+    @blog = current_user.blogs.find(params[:id])
+    @display_form = 'display-form'
+    render 'user/show'
+  end
+
+  def update
+    @blog = current_user.blogs.find(params[:id])
+    git  = @blog.git
+    path = @blog.path
+    if @blog.update_attributes(params[:blog])
+      # If git url change, delete the old path, clone the new repo and update the repository path
+      if git != @blog.git
+        @blog.path = nil
+        @blog.generate_path
+        @blog.save
+        BlogFolderEraserWorker.perform_async("#{Rails.root}/repositories/#{path}")
+        GitCloneWorker.perform_async(@blog.git, "#{Rails.root}/repositories/#{@blog.path}")
+      end
+      redirect_to user_dashboard_path
+    else
+      @display_form = 'display-form'
+      render 'user/show'
+    end
+  end
+
+  def destroy
+    @blog = current_user.blogs.find(params[:id])
+    path = @blog.path
+    @blog.destroy
+    BlogFolderEraserWorker.perform_async("#{Rails.root}/repositories/#{path}")
+    redirect_to user_dashboard_path
   end
 
 end

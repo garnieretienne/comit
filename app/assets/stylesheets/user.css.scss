@@ -29,6 +29,12 @@
     code {
       color: $grey;
     }
+    hr {
+     border-bottom: 1px dashed darken($ligth-grey, 6%);
+    }
+    .menu {
+      margin-bottom: 0;
+    }
   }
 
   #new-blog {

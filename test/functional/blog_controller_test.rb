@@ -74,4 +74,21 @@ class BlogControllerTest < ActionController::TestCase
     end
   end
 
+  test "should delete a blog" do
+    session[:user_id] = users(:one).id # Authenticated
+    @request.host = "comit.dev"
+    assert_difference('Blog.count', -1) do
+      post :destroy, id: blogs(:not_ready).id
+      assert_response :redirect
+    end
+  end
+
+  test "should edit a blog" do
+    session[:user_id] = users(:one).id # Authenticated
+    @request.host = "comit.dev"
+    post :update, id: blogs(:not_ready).id, blog: {git: "#{Rails.root}/tmp/not_ready"}
+    assert_response :redirect
+    assert_not_equal blogs(:not_ready).path, assigns(:blog).path
+  end
+
 end

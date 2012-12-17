@@ -37,13 +37,17 @@ class Blog < ActiveRecord::Base
   end
 
   def refresh
-    repo = Grit::Repo.new("#{Rails.root}/repositories/#{self.path}")
-    process = repo.git.pull({:process_info => true}, 'origin', 'master')
-    if process[0] != 0
-      logger.error "  Blog refresh error: #{process[2]}"
-      return false
+    if File.exist? "#{Rails.root}/repositories/#{self.path}"
+      repo = Grit::Repo.new("#{Rails.root}/repositories/#{self.path}")
+      process = repo.git.pull({:process_info => true}, 'origin', 'master')
+      if process[0] != 0
+        logger.error "  Blog refresh error: #{process[2]}"
+        return false
+      else
+        return true
+      end
     else
-      return true
+      return false
     end
   end
 
@@ -53,6 +57,16 @@ class Blog < ActiveRecord::Base
     else
       return false
     end
+  end
+
+  # Generate a unique path using timestamp and Git URL basename
+  def generate_path
+    self.path ||= "#{Time.new.to_i}_#{File.basename(self.git)}"
+  end
+
+  # Generate a unique token used to refresh the git repo
+  def generate_token
+    self.token ||= SecureRandom.urlsafe_base64
   end
 
   private
@@ -82,16 +96,6 @@ class Blog < ActiveRecord::Base
       return Post.new(title: title, date: date, source: source)
     end
     return nil
-  end
-
-  # Generate a unique path using timestamp and Git URL basename
-  def generate_path
-    self.path = "#{Time.new.to_i}_#{File.basename(self.git)}"
-  end
-
-  # Generate a unique token used to refresh the git repo
-  def generate_token
-    self.token ||= SecureRandom.urlsafe_base64
   end
 
   # Ensure all subdomains are downcased
