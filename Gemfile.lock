@@ -30,6 +30,9 @@ GEM
       multi_json (~> 1.0)
     arel (3.0.2)
     builder (3.0.4)
+    celluloid (0.12.4)
+      facter (>= 1.6.12)
+      timers (>= 1.0.0)
     coffee-rails (3.2.2)
       coffee-script (>= 2.2.0)
       railties (~> 3.2.0)
@@ -38,6 +41,7 @@ GEM
       execjs
     coffee-script-source (1.4.0)
     columnize (0.3.6)
+    connection_pool (0.9.2)
     debugger (1.2.2)
       columnize (>= 0.3.1)
       debugger-linecache (~> 1.1.1)
@@ -49,6 +53,7 @@ GEM
     erubis (2.7.0)
     execjs (1.4.0)
       multi_json (~> 1.0)
+    facter (1.6.16)
     faraday (0.8.4)
       multipart-post (~> 1.1)
     grit (2.5.0)
@@ -118,11 +123,20 @@ GEM
     rdoc (3.12)
       json (~> 1.4)
     redcarpet (2.2.2)
+    redis (3.0.2)
+    redis-namespace (1.2.1)
+      redis (~> 3.0.0)
     sass (3.2.3)
     sass-rails (3.2.5)
       railties (~> 3.2.0)
       sass (>= 3.1.10)
       tilt (~> 1.3)
+    sidekiq (2.6.0)
+      celluloid (~> 0.12.0)
+      connection_pool (~> 0.9.2)
+      multi_json (~> 1)
+      redis (~> 3)
+      redis-namespace
     sprockets (2.2.2)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -133,6 +147,7 @@ GEM
       libv8 (~> 3.3.10)
     thor (0.16.0)
     tilt (1.3.3)
+    timers (1.0.2)
     treetop (1.4.12)
       polyglot
       polyglot (>= 0.3.1)
@@ -154,6 +169,7 @@ DEPENDENCIES
   rails (= 3.2.9)
   redcarpet
   sass-rails (~> 3.2.3)
+  sidekiq
   sqlite3
   therubyracer
   uglifier (>= 1.0.3)

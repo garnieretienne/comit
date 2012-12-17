@@ -45,6 +45,7 @@ class BlogController < ApplicationController
     @blog.user = current_user
     @blog.path = File.basename(params[:blog][:git]) if params[:blog][:git]
     if @blog.save
+      GitCloneWorker.perform_async(@blog.git, "#{Rails.root}/repositories/#{@blog.path}")
       redirect_to user_dashboard_path
     else
       @display_form = 'display-form'
