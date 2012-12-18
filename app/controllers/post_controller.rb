@@ -1,6 +1,6 @@
 class PostController < ApplicationController
 
-  before_filter :blog_specified?
+  before_filter :blog_specified?, :blog_ready?
   
   def show
     @blog = current_blog

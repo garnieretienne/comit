@@ -21,9 +21,29 @@
   %ul.menu
     - if !@display_form
       %li>
-        %a#build-form{href: '#'} Build on a new blog
+        %a#build-form{href: '#'} Build a new blog
+      %li>
+        %a#edit-personnal{href: '#'} Edit my personnal information
+      %li>
+        %a#delete-my-account{href: '#'} Completly delete my account and my blogs
 
-  #new-blog{class: @display_form || ''}
+  #delete-my-account-button
+    = link_to "Delete my account and all my blogs", user_path(current_user), method: :delete, confirm: "Are your sure ?"
+
+  #personnal-information{class: @display_user_form || ''}
+    - if !@user.errors.empty?
+      %ul.errors
+        - @user.errors.each do |attr, error|
+          %li<
+            %b= attr.capitalize
+            = " #{error}"
+    = form_for @user do |f|
+      .form-box
+        %h1
+          = f.text_field :name, value: current_user.name
+      = f.submit "Save changes !"
+
+  #new-blog{class: @display_blog_form || ''}
     - if !@blog.errors.empty?
       %ul.errors
         - @blog.errors.each do |attr, error|
@@ -31,7 +51,7 @@
             %b= attr.capitalize
             = " #{error}"
     = form_for @blog, url: {controller: 'blog', action: (@blog.new_record? ? 'create' : 'update')} do |f|
-      #form-box
+      .form-box
         %h1
           = f.text_field :name, value: @blog.name || 'Blog Title'
         %dl
@@ -41,7 +61,7 @@
             = ".#{request.host}"
           %dt= f.label :git, 'Git URL'
           %dd= f.text_field :git
-      = f.submit (if @blog.new_record? then "Put online !" else "Save changes !" end)
+      = f.submit (@blog.new_record? ? "Put online !" : "Save changes !")
 
   - current_user.blogs.order("created_at DESC").each do |blog|
     .blog

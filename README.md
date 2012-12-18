@@ -1,9 +1,25 @@
-== Testing
+= Testing
 
-Clone the comit-test repository (in comit/tmp/) before : git clone git://github.com/garnieretienne/comit-test.git
-Copy it : cp -r tmp/comit-test tmp/test
-Copy it : cp -r tmp/comit-test tmp/erased
-Copy it : cp -r tmp/comit-test tmp/not_ready
-Clone this repository in project/repositories/test: cd comit/repositories/ && git clone ../tmp/test test
-Clone this repository in project/repositories/erased: cd comit/repositories/ && git clone ../tmp/erased erased
-Remove 'erased' git repo: rm -rf tmp/erased/
+== Test Init:
+
+```bash
+git clone git://github.com/garnieretienne/comit-test.git tmp/comit-test
+cp -rf tmp/comit-test tmp/test
+cp -rf tmp/comit-test tmp/erased
+cp -rf tmp/comit-test tmp/not_ready
+git clone tmp/test repositories/test
+git clone tmp/erased repositories/erased
+rm -rf tmp/erased
+```
+
+== Test clean:
+
+```bash
+rm -rf repositories/*_not_ready
+rm -rf repositories/*_comit-test
+rm -rf repositories/erased
+rm -rf repositories/test
+rm -rf tmp/comit-test
+rm -rf tmp/test
+rm -rf tmp/erased
+```

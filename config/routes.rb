@@ -6,6 +6,7 @@ Comit::Application.routes.draw do
   match     'auth/:provider/callback'     => 'session#create'                       # Authentication callback for omniauth
   match     'signout'                     => 'session#destroy'                      # Sign out
   match     'user/dashboard'              => 'user#show'                            # User profile
+  resources :user,                        only: [:update, :destroy]                           # User management
   resources :blog,                        only: [:create, :destroy, :edit, :update] # Blog management
   root to:  'blog#index'                                                            # Blog index
 

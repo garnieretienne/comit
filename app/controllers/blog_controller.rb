@@ -34,10 +34,12 @@ class BlogController < ApplicationController
   # Hook URL used to refresh a repo on demand
   def hook
     if current_blog
-      if params[:token] == current_blog.token
-        if current_blog.refresh
-          render nothing: true, status: 200
-          return
+      if current_blog.ready? # Repository is already cloned
+        if params[:token] == current_blog.token
+          if current_blog.refresh
+            render nothing: true, status: 200
+            return
+          end
         end
       end
     end
@@ -48,17 +50,18 @@ class BlogController < ApplicationController
     @blog = Blog.new(params[:blog])
     @blog.user = current_user
     if @blog.save
-      GitCloneWorker.perform_async(@blog.git, "#{Rails.root}/repositories/#{@blog.path}")
       redirect_to user_dashboard_path
     else
-      @display_form = 'display-form'
+      @display_blog_form = 'display-blog-form'
+      @user = current_user
       render 'user/show'
     end
   end
 
   def edit
     @blog = current_user.blogs.find(params[:id])
-    @display_form = 'display-form'
+    @user = current_user
+    @display_blog_form = 'display-blog-form'
     render 'user/show'
   end
 
@@ -67,14 +70,6 @@ class BlogController < ApplicationController
     git  = @blog.git
     path = @blog.path
     if @blog.update_attributes(params[:blog])
-      # If git url change, delete the old path, clone the new repo and update the repository path
-      if git != @blog.git
-        @blog.path = nil
-        @blog.generate_path
-        @blog.save
-        BlogFolderEraserWorker.perform_async("#{Rails.root}/repositories/#{path}")
-        GitCloneWorker.perform_async(@blog.git, "#{Rails.root}/repositories/#{@blog.path}")
-      end
       redirect_to user_dashboard_path
     else
       @display_form = 'display-form'
@@ -86,7 +81,6 @@ class BlogController < ApplicationController
     @blog = current_user.blogs.find(params[:id])
     path = @blog.path
     @blog.destroy
-    BlogFolderEraserWorker.perform_async("#{Rails.root}/repositories/#{path}")
     redirect_to user_dashboard_path
   end
 

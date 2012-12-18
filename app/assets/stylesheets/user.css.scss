@@ -17,7 +17,7 @@
     }
   }
 
-  .blog, #form-box {
+  .blog, .form-box {
     padding: 1em;
     margin-bottom: 2em;
     background-color: lighten($ligth-grey, 6%);
@@ -37,19 +37,9 @@
     }
   }
 
-  #new-blog {
+  #new-blog, #personnal-information {
     margin-bottom: 2em;
     display: none;
-
-    #close-form-builder {
-      color: $grey;
-      display: block;
-      float: right;
-      margin-bottom: 1em;
-    }
-    #close-form-builder:before {
-      content: "☓ ";
-    }
 
     .field_with_errors {
       display: inline;
@@ -93,7 +83,7 @@
       width: 50%;
     }
    
-    #blog_name {
+    #blog_name, #user_name {
       font-weight: bold;
       width: 100%;
       border-bottom: 0;
@@ -101,8 +91,24 @@
 
   }
 
-  #new-blog.display-form {
+  #new-blog.display-blog-form {
     display: block;
+  }
+
+  #delete-my-account-button {
+    display: none;
+    width: 80%;
+    margin: auto;
+    margin-bottom: 2em;
+    padding: 1em;
+    background-color: $red;
+    text-align: center;
+    border: 2px solid darken($red, 20%);
+    a {
+      color: white;
+      border-bottom: 0;
+      font-weight: bold;
+    }
   }
 
 }

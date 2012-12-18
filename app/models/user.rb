@@ -1,5 +1,7 @@
 class User < ActiveRecord::Base
-  has_many :blogs
+  has_many :blogs, dependent: :destroy
+
+  attr_accessible :name
 
   def self.from_omniauth(auth)
     where(auth.slice('provider', 'uid')).first || create_from_omniauth(auth)

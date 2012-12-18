@@ -23,4 +23,12 @@ class ApplicationController < ActionController::Base
       redirect_to "http://#{request.domain}#{(request.port ? ":"+request.port.to_s : '')}" and return
     end
   end
+
+  # Test if the blog is ready to be published
+  # (repository is not cloned yet?)
+  def blog_ready?
+    if !current_blog.ready?
+      render 'blog/not_ready'
+    end
+  end
 end

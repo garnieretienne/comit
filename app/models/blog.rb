@@ -1,12 +1,18 @@
 class Blog < ActiveRecord::Base
   belongs_to :user
   attr_accessible :git, :name, :subdomain
-  validates :git, :name, :subdomain, :user_id, presence: true
-  validates :git, :subdomain, uniqueness: true
+  
+  validates :git, :name, :subdomain, :token, :user_id, presence: true
+  validates :git, :subdomain, :path, :token, uniqueness: true
   validates :git, git_url: true
 
-  before_save :generate_path, :generate_token
-  before_validation :downcase_subdomain
+
+  before_validation :downcase_subdomain, :generate_token
+  before_create     :generate_path!
+  after_create      :clone_blog_repo
+  before_update     :update_path_if_needed
+  after_update      :clone_blog_repo_if_needed
+  before_destroy    :erase_blog_folder
 
   def posts
     posts = []
@@ -59,16 +65,6 @@ class Blog < ActiveRecord::Base
     end
   end
 
-  # Generate a unique path using timestamp and Git URL basename
-  def generate_path
-    self.path ||= "#{Time.new.to_i}_#{File.basename(self.git)}"
-  end
-
-  # Generate a unique token used to refresh the git repo
-  def generate_token
-    self.token ||= SecureRandom.urlsafe_base64
-  end
-
   private
 
   # Return the root tree of the Git repository (from the last commit on the master branch).
@@ -101,6 +97,43 @@ class Blog < ActiveRecord::Base
   # Ensure all subdomains are downcased
   def downcase_subdomain
     self.subdomain = self.subdomain.downcase if self.subdomain
+  end
+
+  # Generate a unique path using timestamp and Git URL basename
+  def generate_path!
+    self.path = "#{Time.new.to_i}_#{File.basename(self.git)}"
+  end
+
+  # Generate a unique token used to refresh the git repo
+  def generate_token
+    self.token ||= SecureRandom.urlsafe_base64
+  end
+
+  # Delete the blog folder
+  def erase_blog_folder
+    BlogFolderEraserWorker.perform_async("#{Rails.root}/repositories/#{self.path}")
+  end
+
+  # Clone the blog repo
+  def clone_blog_repo
+    GitCloneWorker.perform_async(self.git, "#{Rails.root}/repositories/#{self.path}")
+  end
+
+  # If git address has been modified, erase old folder and generate 
+  # a new path from the new git address.
+  def update_path_if_needed
+    if self.changed_attributes["git"]
+      erase_blog_folder
+      generate_path!
+    end
+  end
+
+  # If git address has been modified, clone the new repo 
+  # into corresponding path.
+  def clone_blog_repo_if_needed
+    if self.changed_attributes["git"]
+      clone_blog_repo
+    end
   end
 
 end
