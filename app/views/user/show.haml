@@ -18,10 +18,10 @@
       %b= current_user.blogs.count
       blogs hosted on Comit.
 
+  %a#build-form{href: '#'} Build a new blog
+
   %ul.menu
     - if !@display_form
-      %li>
-        %a#build-form{href: '#'} Build a new blog
       %li>
         %a#edit-personnal{href: '#'} Edit my personnal information
       %li>
