@@ -1,0 +1,122 @@
+@import "colors";
+@import "typography";
+
+#welcome-page {
+  color: $grey;
+
+  .part {
+    border-bottom: 8px solid $custom-color;
+    padding: 1em;
+  }
+ 
+  header {
+    text-align: center;
+
+    #banner {
+      color: $grey;
+      margin-bottom: 1em;
+      background-color: $black;
+      background-image: url('/assets/blackorchid.png');
+
+      #sign-in {
+        a {
+          color: $custom-color;
+        }
+        font-weight: bold;
+        text-align: right;
+      }
+
+      h1 {
+        color: $white;
+        margin: 0;
+        font-size: 6em;
+        font-family: $logo;
+        line-height: 1em;
+        margin-bottom: 0.6em;
+      }
+
+      #motto {
+        color: $white;
+        font-size: 4em;
+      }
+
+      .headline {
+        color: lighten($grey, 20%);
+        font-family: $base;
+        font-size: 3em;
+        margin-bottom: 1em;
+        b {
+          color: $custom-color;
+        }
+      }
+    }
+  }
+
+  #what-is-comit {
+
+    #presentation {
+      max-width: 800px;
+      margin: auto;
+      margin-bottom: 2em;
+    }
+
+    .slice-left {
+      overflow: hidden;
+      max-width: 800px;
+      margin: auto;
+      margin-bottom: 4em;
+
+      .picture {
+        float: left;
+        width: 46%;
+        
+        img {
+          width: 98%;
+          margin: 0;
+          margin: auto;
+          border: 2px solid $ligth-grey;
+        }
+      }
+
+      .content {
+        margin-left: 54%;
+      }
+    }
+
+    .slice-right {
+      max-width: 800px;
+      margin: auto;
+      overflow: hidden;
+      margin-bottom: 4em;
+
+      .picture {
+        float: right;
+        width: 46%;
+        
+        img {
+          width: 98%;
+          margin: 0;
+          margin: auto;
+          border: 2px solid $ligth-grey;
+        }
+      }
+
+      .content {
+        margin-right: 54%; 
+      }
+    }
+  }
+
+  h1 {
+    text-align: center;
+    font-size: 3em;
+    margin: 0;
+  }
+
+  h2 {
+    text-align: center;
+    font-size: 1.4em;
+    margin: 0
+  }
+}
+

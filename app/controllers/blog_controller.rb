@@ -18,7 +18,7 @@ class BlogController < ApplicationController
     # Welcome page
     else
       all
-      render action: :all and return
+      render 'welcome/index' and return
     end
 
   end

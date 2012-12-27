@@ -1,0 +1,67 @@
+#welcome-page
+  %header
+    #banner.part
+      #sign-in
+        = link_to 'Sign in with Github', '/auth/github'
+      %h1 Comit
+      #motto Publish from your command line
+      .headline>
+        %b= "Hosted blogging service"
+        = " published using "
+        %b= "Mardown" 
+        = "and" 
+        %b= "Git"
+        = "."
+
+  #what-is-comit.part
+    %h1 What is comit ?
+
+    #presentation
+      Comit is a blogging service built around Git and Mardown technologies. I'm a developper and i think Git can be esealy used to publish and keep track of my publications and i was hoped an existing service would be able to get my two of three publications online quickly. I haven't find one (who provide hosting) so i built Comit. I choose markdown for it's clarity and because i like to work with rails and Github, i already used this markup language.
+      I've tried to make Comit as simple as possible and to integrate it completly using Git (ex: author and modifications are tracked using comit informations).
+
+    .slice-left
+      .picture
+        = image_tag 'blog.png'
+      .content
+        .text
+          %h2> 
+            Your blog is hosted by
+            %b me
+          %ul
+            %li No need to setup a server...
+            %li ... but you can if you want
+            %li Built to be simple to use and quick to setup
+
+    .slice-right
+      .picture
+        = image_tag 'markdown.png'
+      .content
+        .text
+          %h2>
+            Write your posts using 
+            %b Markdown
+          %ul
+            %li Easy to learn
+            %li Plain text writing
+            %li Support pure HTML
+
+    .slice-left
+      .picture
+        = image_tag 'github.png'
+      .content
+        .text
+          %h2> 
+            Manage publications using 
+            %b Git
+          %ul
+            %li Write, comit, push and it's online
+            %li Multiple backup because git is decentralised
+            %li Keep trace of revisons and authors
+            %li You own your data
+
+  #how-it-works.part
+    %h1 How it works
+
+  #getting-online.part
+    %h1 Getting online
