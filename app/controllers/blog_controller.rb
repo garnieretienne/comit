@@ -18,7 +18,7 @@ class BlogController < ApplicationController
     # Welcome page
     else
       all
-      render 'welcome/index' and return
+      render 'welcome/landing' and return
     end
 
   end

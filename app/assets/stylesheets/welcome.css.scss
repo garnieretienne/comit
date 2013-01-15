@@ -1,6 +1,269 @@
 @import "colors";
 @import "typography";
 
+#landing-page {
+  color: $grey;
+
+  .content {
+    width: 1000px;
+    margin: auto;
+    overflow: hidden;
+  }
+
+  .getting-started {
+    display: block;
+    width: 10em;
+    margin: auto;
+    margin-top: 2em;
+    padding: 0.4em;
+    background-color: darken($custom-color, 8%);
+    text-align: center;
+    border: 2px solid darken($custom-color, 20%);
+    color: white;
+    font-weight: bold;
+  }
+
+  h1 {
+    font-size: 2em;
+    padding-left: 1em;
+    border-left: 10px solid $custom-color;
+    margin-bottom: 2em;
+  }
+
+  h2 {
+    font-size: 1.4em;
+  }
+
+  header {
+    overflow: hidden;
+    background-color: $black;
+    background-image: url('/assets/blackorchid.png');
+    color: $white;
+    padding: 0.4em 1em;
+    border-bottom: 6px solid $custom-color;
+
+    #menu {
+      float: right;
+      text-align: right;
+      margin-top: 0.4em;
+      margin-bottom: 0.4em;
+      font-size: 0.9em;
+      font-style: italic;
+      color: lighten($grey, 14);
+
+      a, a:link, a:visited, a:active, a:hover {
+        color: lighten($grey, 14);
+        font-weight: bold;
+      }
+
+      a.focus {
+        color: $white;
+      }
+    }
+
+    // #logo {
+    //   width: 10em;
+    //   float: left;
+
+    //   h1 {
+    //     border: 0;
+    //     font-size: 1.6em;
+    //     text-align: left;
+    //     color: $white;
+    //     font-family: $logo;
+    //     margin: 0;
+    //     padding: 0;
+    //     background-color: transparent;
+
+    //     a, a:link, a:visited, a:active, a:hover {
+    //       color: $white;
+    //       text-decoration: none;
+    //     }
+    //   }
+    // }
+  }
+
+  #banner {
+    background-color: $white;
+    padding: 2em;
+    overflow: hidden;
+    margin-bottom: 4em;
+
+    .left {
+      float: left;
+      width: 45%;
+      padding-top: 4em;
+
+      h1 {
+        text-shadow: 1px 1px 0px $black;
+        color: $custom-color;
+        margin: 0;
+        font-size: 6em;
+        font-family: $logo;
+        line-height: 1em;
+        text-align: center;
+        margin-bottom: 0.2em;
+        border: 0;
+        padding: 0;
+        background-color: transparent;  
+      }
+
+      h2 {
+        margin: 0;
+        font-size: 2em;
+        line-height: 1em;
+        margin-bottom: 1em;
+        text-align: center; 
+      }
+
+      #headline {
+        text-align:justify;
+        text-justify:inter-word;
+        margin-bottom: 2em;
+      }
+
+      .menu {
+        margin-bottom: 4em;
+      }
+    }
+
+    .right {
+      overflow: hidden;
+      margin-left: 45%;
+      width: 55%;
+
+      img {
+        width: 80%;
+        max-height: 100%;
+        // margin: auto;
+        float: right;
+      }
+    }
+
+    .note {
+      margin: 0;
+      padding: 0;
+      font-style: italic;
+      text-align: center;
+      margin-bottom: 1em;
+    }
+  }
+
+  #how-it-work {
+    #rules {
+      margin-bottom: 4em;
+
+      h2 {
+        font-weight: bold;
+      }
+
+      p { 
+        text-align: left;
+      }
+    }
+
+    #logo {
+      #pictures {
+        text-align: center;
+        height: 2em;
+        margin: auto;
+        width: 12em;
+        overflow: hidden;
+        margin-bottom: 2em;
+
+        img {
+          display: block;
+          height: 100%;
+          float: left;
+          margin: 0;
+          margin-left: 1em;
+        }
+      }
+    }
+  }
+
+  #pricing {
+    #pricing-plan {
+      float: left;
+      width: 260px;
+      background-color: $grey;
+      text-align: center;
+      border: 8px solid $black;
+      padding: 1em;
+      color: $ligth-grey;
+
+      ul {
+        text-align: left;
+        color: $ligth-grey;
+        font-weight: bold;
+      }
+
+      #plan-title {
+        font-size: 2em;
+      }
+
+      #plan-price {
+        font-size: 10em;
+        font-weight: bold;
+        text-shadow: 1px 1px 0px $black;
+        color: $custom-color;
+      }
+
+      #plan-per-month {
+        font-size: 1.4em;
+      }
+    }
+
+    #description {
+      margin-left: 360px;
+    }
+
+    #start {
+      display: block;
+      width: 20em;
+      margin: auto;
+      margin-top: 2em;
+      padding: 0.4em;
+      background-color: darken($custom-color, 8%);
+      text-align: center;
+      border: 2px solid darken($custom-color, 20%);
+      color: white;
+      font-weight: bold;
+    }
+  }
+
+  #getting-started {
+    ol {
+    
+      li {
+        clear: left;
+        
+        .step {
+          overflow: hidden;
+        }
+
+        .left {
+          float: left;
+          width: 70%;
+        }
+
+        .right {
+          margin-left: 70%;
+          margin-top: 3em;
+
+          p {
+            padding-left: 1em;
+            border-left: 1px dotted $custom-color;
+            margin-left: 2em;
+            text-align: left;
+            font-size: 0.8em;
+          }
+        }
+      }
+    }
+  }
+}
+
 #welcome-page {
   color: $grey;
 

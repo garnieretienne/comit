@@ -1,0 +1,200 @@
+#landing-page
+  
+  %header
+    .content
+      #menu
+        = link_to "How it work ?", '#how-it-work'
+        = '-'
+        = link_to "Pricing", '#pricing'
+        = '-'
+        = link_to "Sign in with Github", '/auth/github', class: 'focus'
+
+  #banner
+    .content
+      .left
+        %h1 Comit
+        %h2 Your git repo is now a blog.
+        #headline>
+          %b Comit is an bloging platform backed by Git. 
+          Write, commit and push your publications online.
+          %b Comit use Markdown markup language 
+          to convert your papers into blog posts.
+
+        %ul.menu
+          %li= link_to 'See an example of blog powered by Comit'
+          %li= link_to 'How it work ?', '#how-it-work'
+          %li= link_to "Pricing", '#pricing'
+
+        %a.getting-started{href: '/auth/github'}
+          Getting Online !
+        .note 30-day free trial, no credit card needed !
+
+      .right
+        #screen
+          = image_tag 'octopus.png'
+
+  %hr
+
+  #how-it-work.part
+    .content
+      %h1 
+        = link_to 'How it work ?', '#how-it-work'
+
+      #rules
+
+        %h2 Your post are writed in Markdown
+
+        %p Markup is a lightweiht markup already used in many online services (Hacker news, Github, Stack Overflow, etc...). It provide clear and readable synthax and is easy to learn.
+
+        %h2 Your blog posts are stored on a public Git repository
+
+        %p You own your data. You can easily migrate from Comit to another markdown supported blog platform (like Jekyll or Octopress).
+
+        %h2 Your public Git repository is indexed by Comit
+
+        %p 
+          When you create your new blog on Comit, app clone your git repository and index it to find compatible markdown files. All files in the roots directory that respect the following name scheme (
+          %code YYYY-MM-DD-Your_post_title.md
+          ) will be considered as a blog post and made available at 
+          %code http://yoursubdomain.comit.io/YYYY/MM/DD/Your_post_title
+          = '. All others files and folders will be just ignored.'
+
+        %ul.menu
+          %li 
+            = link_to 'An example of post formatted in Markdown'
+          %li 
+            = link_to 'An example of public Git repository hosting a Comit blog'
+
+        %h2 On Git repository pushes, a Hook Url notify Comit app to refresh its cache
+
+        %p In order for Comit to track new publication or any other modifications on your content, Comit need a way to be alerted when change are pushed on your public Git repository. To archieve that, each blog has a unique "Hook Url" that pull change to the cache when reached. You will need to configure your Git provider to setup a Post-Receive Hooks to this URL. 
+
+        %ul.menu
+          %li 
+            = link_to 'How-to on Github', 'https://help.github.com/articles/post-receive-hooks'
+
+      #logo
+        #pictures
+          = image_tag 'logo_git.png'
+          = image_tag 'logo_markdown.png'
+
+  %hr
+
+  / #getting-started.part
+  /   .content
+  /     %h1 
+  /       = link_to 'Getting Online in 5 easy steps.', '#getting-started'
+
+  /     %ol
+  /       %li 
+  /         %h2 Create a public Git repository
+  /         .step
+  /           .left
+  /             %p Comit app use a public Git repository to access your publication.
+  /             %pre
+  /               %code
+  /                 = preserve do
+  /                   mkdir my_new_blog && cd my_new_blog
+  /                   git init
+  /                   git remote add *your read+write git url*
+  /           .right
+  /             %p 
+  /               For now, Comit only support registration and authentication using an Github account. 
+  /               %br 
+  /               Github provide free public git repository hosting.
+
+  /       %li 
+  /         %h2 Create your first post using Markdown synthax
+  /         .step
+  /           .left
+  /             %p 
+  /               Create a new file with markdown content to be published.
+  /               %br
+  /               %b Respect the filename scheme: 
+  /               %code YYYY-MM-DD-Your_publication_title.md
+  /             %pre
+  /               %code
+  /                 = preserve do
+  /                   echo '# Hello World' > 2013-01-01-Hello_World_post.md
+  /           .right
+  /             %p 
+  /               Markdown is a lightweight markup language. It's easy to write and support raw HTML contents.
+  /               = link_to 'More informations on Wikipedia', 'https://en.wikipedia.org/wiki/Markdown'
+
+  /       %li 
+  /         %h2 Commit and Push your publication to your remote git repository
+  /         .step
+  /           .left
+  /             %p Use Git to commit your change and push your publication to your Git repository
+  /             %pre
+  /               %code
+  /                 = preserve do
+  /                   git add 2013-01-01-Hello_World_post.md
+  /                   git commit -m "Publish Hello World post"
+  /                   git push origin master
+  /           .right
+  /             %p 
+  /               Once you created your blog on Comit, a Hook URL will be available in your dashboard. To auto-update your blog when your remote repository is updated, you will need to hook this URL with your service provider. 
+  /               = link_to 'See here for Github.', 'https://help.github.com/articles/post-receive-hooks'
+
+  /       %li 
+  /         %h2 Register your blog on Comit to get online
+  /         .step
+  /           .left
+  /             %p 
+  /               You can now register your account and create your new blog to get it online. You will need a blog name, a subdomain and the public url to your newly created git repository.
+  /               %br
+  /               = link_to 'Sign up using Github.', '/auth/github', target: '_blank'
+
+  /       %li 
+  /         %h2 Hook URL
+  /         .step
+  /           .left
+  /             %p 
+  /               In order to have your blog automatically updated after a 
+  /               %code git push
+  /               , you need to hook an unique url to your Git repository. 
+  /               %br 
+  /               You can get this unique url in your 
+  /               = link_to 'dashboard'
+  /               after created your blog.
+  /               %br
+  /               = link_to 'See here to setup a Post-Receive hook on Github.', 'https://help.github.com/articles/post-receive-hooks'
+  /           .right
+  /             %p
+  /               A 
+  /               %i Hook URL 
+  /               or 
+  /               %i Post-Receive Hooks
+  /               is a way for a Git repository to commicate an update to a remote web server.
+  /               %br
+  /               Comit need it to be aware of your blog modifications.
+
+  / %hr
+
+  #pricing.part
+    .content
+      %h1 One simple plan
+
+      #pricing-plan
+        #plan-title
+          Personnal
+        #plan-price
+          $8
+        #plan-per-month
+          each month
+        %ul#featured
+          %li Unmetered number of blogs
+          %li Unmetered traffic
+      #description
+        %h2 
+          %b Free trial
+        %p 
+          You can use Comit for free for 
+          %b 30 days without any credit card or engagment. 
+          At the end of your trial, you will receive an email and will decide if Comit feet your needs or not.
+
+        %a#start{href: '/auth/github'}
+          Authenticate with Github to start publish your blog
+
+  %hr

@@ -17,10 +17,14 @@
       You have 
       %b= current_user.blogs.count
       blogs hosted on Comit.
+      %br
+      You are in trial.
 
   %a#build-form{href: '#'} Build a new blog
 
   %ul.menu
+    %li>
+      = link_to 'Contact Comit developer', 'mailto:garnier.etienne@gmail.com'
     - if !@display_form
       %li>
         %a#edit-personnal{href: '#'} Edit my personnal information
@@ -63,6 +67,15 @@
           %dd= f.text_field :git
       = f.submit (@blog.new_record? ? "Put online !" : "Save changes !")
 
+    %p 
+      For each new blog, you will need an existing public Git repository. 
+      = link_to 'Github', 'https://github.com/'
+      can provide it for free.
+      %br
+      This repository root folder will be scanned for markup file using the correct name scheme: 
+      %code YYYY-MM-DD-Post_title.md
+      , all other files or folders will just be ignored.
+
   - current_user.blogs.order("created_at DESC").each do |blog|
     .blog
       %h1= blog.name
@@ -71,7 +84,9 @@
         %dd= link_to url_for_subdomain(blog.subdomain), url_for_subdomain(blog.subdomain)
         %dt Git URL
         %dd= link_to blog.git, blog.git
-        %dt Hook URL (POST)
+        %dt 
+          Hook URL (POST)
+          = link_to '?', "http://help.comit.dev:3000/2013/01/15/Hook_URL"
         %dd 
           %code=url_for_token(blog.token)
       %hr
