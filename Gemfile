@@ -2,7 +2,6 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.9'
 gem 'jquery-rails'
-gem 'sqlite3'
 gem 'haml'
 gem 'redcarpet'
 gem 'grit'
@@ -28,5 +27,7 @@ end
 # Deploy with Capistrano
 # gem 'capistrano'
 
-# To use debugger
-gem 'debugger'
+group :development do
+  gem 'debugger'
+  gem 'sqlite3'
+end
