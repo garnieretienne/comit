@@ -1,6 +1,7 @@
 #welcome-page
   %header
     #banner.part
+      = ENV['GITHUB_KEY']
       #sign-in
         = link_to 'Sign in with Github', '/auth/github'
       %h1 Comit
