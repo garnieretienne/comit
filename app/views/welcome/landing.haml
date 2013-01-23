@@ -1,37 +1,44 @@
 #landing-page
+
+  #welcome-screen.part
   
-  %header
-    .content
-      #menu
-        = link_to "How it work ?", '#how-it-work'
-        = '-'
-        = link_to "Pricing", '#pricing'
-        = '-'
-        = link_to "Sign in with Github", '/auth/github', class: 'focus'
+    %header
+      .content
+        #menu
+          = link_to "How it work ?", '#how-it-work'
+          = '-'
+          = link_to "Pricing", '#pricing'
+          = '-'
+          = link_to "Sign in with Github", '/auth/github', class: 'focus'
 
-  #banner
-    .content
-      .left
-        %h1 Comit
-        %h2 Your git repo is now a blog.
-        #headline>
-          %b Comit is an bloging platform backed by Git. 
-          Write, commit and push your publications online.
-          %b Comit use Markdown markup language 
-          to convert your papers into blog posts.
+    #banner
+      .content
+        .left
+          %h1 Comit
+          %h2 Your git repo is now a blog.
+          #headline>
+            %b Comit is an bloging platform backed by Git. 
+            Write, commit and push your publications online.
+            %b Comit use Markdown markup language 
+            to convert your papers into blog posts.
 
-        %ul.menu
-          %li= link_to 'See an example of blog powered by Comit'
-          %li= link_to 'How it work ?', '#how-it-work'
-          %li= link_to "Pricing", '#pricing'
+          %ul.menu
+            %li= link_to 'See an example of blog powered by Comit'
+            %li= link_to 'How it work ?', '#how-it-work'
+            %li= link_to "Pricing", '#pricing'
 
-        %a.getting-started{href: '/auth/github'}
-          Getting Online !
-        .note 30-day free trial, no credit card needed !
+          %a.getting-started{href: '/auth/github'}
+            Getting Online !
+          .note 30-day free trial, no credit card needed !
 
-      .right
-        #screen
-          = image_tag 'octopus.png'
+        .right
+          #screen
+            = image_tag 'octopus.png'
+
+    %p#simple
+      %code git add 2013-01-01-Happy_New_Year.md 
+      >> 
+      %code http://yoursubdomain.comit.io/2013/01/01/Happy_New_Year
 
   %hr
 
