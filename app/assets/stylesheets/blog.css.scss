@@ -1,10 +1,10 @@
 @import "colors";
 @import "typography";
+@import "vars";
 
 #blog {
-  max-width: 600px;
-  margin: auto;
-  padding: 1em;
+  padding-left: $sidebar-width;
+  margin-left: -28px;
 
   header {
     p {

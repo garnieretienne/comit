@@ -1,15 +1,67 @@
 @import "colors";
 @import "typography";
+@import "vars";
+
+#sidebar {
+  float: left;
+  width: $sidebar-width;
+
+  #avatars {
+    float: right;
+    margin-right: 1em;
+
+    .avatar {
+      overflow: hidden;
+      width: $avatar-size;
+      height: $avatar-size;
+      border: 4px solid $ligth-grey;
+      background-color: $ligth-grey;
+      -moz-border-radius: 50%;
+      -webkit-border-radius: 50%;
+      border-radius: 50%;
+      margin-bottom: 1em;
+
+      img {
+        margin: 0;
+        width: 100%;
+      }
+    }
+  }
+}
 
 article {
-  max-width: 480px;
-  margin: auto;
-  padding: 1em;
+  margin-left: $sidebar-width;
   margin-bottom: 4em;
 
+  #content {
+
+    h1, h2, h3, h4, h5, h6, p, ul {
+      max-width: $article-width;
+      margin-left: $article-margin;
+      padding-right: $article-margin;
+    }
+
+    pre {
+      padding: 1em;
+      padding-left: $article-margin;
+      padding-right: $article-margin;
+      border-left: 0;
+      border-right: 0;
+    }
+
+    blockquote {
+      margin-left: -$article-margin;
+      p {
+        padding-left: $article-margin;
+      }
+    }
+  }
+
   header {
-    margin-bottom: 2em;
-    text-transform: uppercase;
+    padding-left: $article-margin;
+    padding-bottom: 1em;
+    min-height: $avatar-size;
+    border-left: 1px solid $ligth-grey;
 
     h1, p {
       margin: 0px;
@@ -32,9 +84,11 @@ article {
       font-family: $title;
       line-height:100%;
       font-weight: normal;
+      text-transform: uppercase;
     }
 
     #info {
+      font-style: italic;
       color: $grey;
     }
   }
