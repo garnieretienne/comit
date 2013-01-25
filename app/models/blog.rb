@@ -89,9 +89,31 @@ class Blog < ActiveRecord::Base
       end
       title  = name[:title].gsub /_/, ' '
       source = blob.data.force_encoding("UTF-8")
-      return Post.new(title: title, date: date, source: source)
+      history, authors = get_post_history blob
+      return Post.new(title: title, date: date, source: source, authors: authors, history: history)
     end
     return nil
+  end
+
+  # Retrace post history (using commit authors)
+  # and find post authors.
+  def get_post_history(blob)
+    history = []
+    authors = []
+    repo = Grit::Repo.new("#{Rails.root}/repositories/#{self.path}")
+    commits = repo.log('master', blob.basename)
+    commits.each do |commit|
+      date = commit.date
+      author = Grit::Actor.from_string(commit.author_string)
+      authorHash = {name: author.name, email: author.email}
+      authors << authorHash if !authors.include? authorHash
+      if commit.sha == commits.last.sha then
+        history << "created #{date.strftime("on %m-%d-%Y at %H:%M")} by #{author.name} (#{commit.message})"
+      else
+        history << "updated #{date.strftime("on %m-%d-%Y at %H:%M")} by #{author.name} (#{commit.message})"
+      end
+    end
+    return history.reverse, authors.reverse
   end
 
   # Ensure all subdomains are downcased

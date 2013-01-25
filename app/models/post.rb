@@ -1,9 +1,10 @@
 class Post
-  attr_accessor :date, :title, :source
+  attr_accessor :date, :title, :source, :authors, :history
   attr_accessor :errors
 
   def initialize(attributes)
     @errors = Hash.new
+    @authors = []
     attributes.each do |key, value|
       send("#{key}=", value) if respond_to? "#{key}="
     end
@@ -33,6 +34,13 @@ class Post
       errors = true
     end
 
+    # authors
+    case
+    when @authors.empty?
+      @errors[:authors] = "can't be empty"
+      errors = true
+    end
+    
     if errors
       return false
     else

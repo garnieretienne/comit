@@ -1,3 +1,8 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
+$(document).ready ->
+
+  # Display gravatar if they exists
+  $('#avatars').find('div').each (index, div) ->
+    $div = $(div)
+    gravatarUrl = $div.attr('data-gravatar')
+    $('<img>').attr('src', gravatarUrl).load ->
+      $div.append(this).fadeIn()

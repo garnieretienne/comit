@@ -8,11 +8,13 @@
     
 #sidebar
   #avatars
-    .avatar
-      = image_tag 'https://en.gravatar.com/userimage/19380106/ef32f8e2670ffceaf668a068b99ba52a.jpg?size=60'
+    - @post.authors.each do |author|
+      = gravatar_div_tag author[:email]
 %article
   %header
     %h1.title= @post.title
     #info
-      = "Writed by Etienne Garnier on #{@post.date.strftime("%Y-%m-%d")}"
-  #content= @post.html.html_safe
+      Published by
+      = (@post.authors.count > 1) ? @post.authors.map{|author| author[:name]}.to_sentence : @post.authors.first[:name]
+      = "on #{@post.date.strftime("%b %d, %Y")}"
+  #content= (@post.html) ? @post.html.html_safe : ''
