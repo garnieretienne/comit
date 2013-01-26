@@ -38,7 +38,7 @@ body {
 
   code {
     color: $dark-grey;
-    background-color: lighten($ligth-grey, 6%);
+    background-color: lighten($light-grey, 6%);
     padding-left: 0.4em;
     padding-right: 0.4em;
   }
@@ -46,8 +46,8 @@ body {
   pre {
     padding: 1.4em;
     overflow: auto;
-    background-color: lighten($ligth-grey, 6%);
-    border: 1px solid darken($ligth-grey, 6%);
+    background-color: lighten($light-grey, 6%);
+    border: 1px solid darken($light-grey, 6%);
     code {
       padding: 0;
     }
@@ -76,7 +76,7 @@ body {
 
   hr {
     border: 0;
-    border-bottom: 1px dashed $ligth-grey;
+    border-bottom: 1px dashed $light-grey;
     background: transparent;
     margin-top: 1em;
     margin-bottom: 1em;
@@ -87,21 +87,21 @@ body {
     border-collapse: collapse;
     margin: auto;
     margin-bottom: 1em;
-    border: 1px solid darken($ligth-grey, 20%);
+    border: 1px solid darken($light-grey, 20%);
     tr {
-      border-bottom: 1px solid $ligth-grey;
+      border-bottom: 1px solid $light-grey;
       td {
         color: $grey;
         padding: 0.4em 1em;
-        border-right: 1px solid $ligth-grey;
+        border-right: 1px solid $light-grey;
       }
       td:last-child {
         border-right: 0; 
       }
       th {
         padding: 0.4em 1em;
-        border-bottom: 1px solid darken($ligth-grey, 20%);
-        border-right: 1px solid darken($ligth-grey, 20%);
+        border-bottom: 1px solid darken($light-grey, 20%);
+        border-right: 1px solid darken($light-grey, 20%);
         font-weight: bold;
         text-align: left;
         color: $dark-grey;
@@ -115,7 +115,7 @@ body {
     }
     tr:hover > td {
       cursor: pointer;
-      background-color: $ligth-grey;
+      background-color: $light-grey;
     }
   }
 
@@ -186,7 +186,7 @@ body {
     }
 
     #sign-in {
-      color: $ligth-grey;
+      color: $light-grey;
       font-size: 0.9em;
       float: right;
       text-align: right;

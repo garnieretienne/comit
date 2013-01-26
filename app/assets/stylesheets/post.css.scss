@@ -15,8 +15,8 @@
       overflow: hidden;
       width: $avatar-size;
       height: $avatar-size;
-      background-color: $ligth-grey;
-      border: 4px solid $ligth-grey;
+      background-color: $light-grey;
+      border: 4px solid $light-grey;
       -moz-border-radius: 50%;
       -webkit-border-radius: 50%;
       border-radius: 50%;
@@ -65,7 +65,7 @@ article {
     padding-left: $article-margin;
     padding-bottom: 1em;
     min-height: $avatar-size;
-    border-left: 1px solid $ligth-grey;
+    border-left: 1px solid $light-grey;
 
     h1, p {
       margin: 0px;
