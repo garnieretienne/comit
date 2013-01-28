@@ -3,8 +3,9 @@ class User < ActiveRecord::Base
 
   attr_accessible :name
 
+  # To activate open registration, uncomment the last part
   def self.from_omniauth(auth)
-    where(auth.slice('provider', 'uid')).first || create_from_omniauth(auth)
+    where(auth.slice('provider', 'uid')).first #|| create_from_omniauth(auth)
   end
 
   def self.create_from_omniauth(auth)

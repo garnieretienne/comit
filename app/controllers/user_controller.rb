@@ -11,7 +11,6 @@ class UserController < ApplicationController
     if current_user.update_attributes(params[:user])
       redirect_to user_dashboard_path
     else
-      #TODO: manage errors
       redirect_to user_dashboard_path
     end
   end
