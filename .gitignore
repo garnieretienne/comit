@@ -21,5 +21,6 @@
 /repositories/*
 !/repositories/.gitme
 
-# Ignore start script with credentials
+# Ignore start script with credentials and .env files
 start_server_dev
+.env
