@@ -1,5 +1,7 @@
 Comit::Application.routes.draw do
 
+  post "early_access/create"
+
   match     ':year/:month/:day/:title.md' => 'post#markdown'                        # Post in Mardown
   match     ':year/:month/:day/:title'    => 'post#show'                            # Post in HTML
   match     'hook/:token'                 => 'blog#hook',      :via => :post        # Hook for Git repository pull

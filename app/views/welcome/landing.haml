@@ -27,9 +27,11 @@
             %li= link_to 'How it work ?', '#how-it-work'
             / %li= link_to "Pricing", '#pricing'
 
-          %a.getting-started{href: '/auth/github'}
-            Getting Online !
-          .note 30-day free trial, no credit card needed !
+          / %a.getting-started{href: '/auth/github'}
+          /   Getting Online !
+          / .note 30-day free trial, no credit card needed !
+
+          = render 'welcome/coming_soon'
 
         .right
           #screen
@@ -79,6 +81,8 @@
         %ul.menu
           %li 
             = link_to 'How-to on Github', 'https://help.github.com/articles/post-receive-hooks'
+
+      = render 'welcome/coming_soon'
 
       #logo
         #pictures

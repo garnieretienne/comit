@@ -1,0 +1,14 @@
+.coming-soon
+  .cs-form
+    %p 
+      Comit is not ready yet. 
+      %br
+      Drop me your email address to get in early !
+    = form_for EarlyAccess.new, :url => early_access_create_path, remote: true do |f| 
+      = f.text_field :email_address, onfocus: "if(this.value == 'Enter your email address...') { this.value = ''; }", value: 'Enter your email address...'
+      %br
+      = f.submit "Notify me when it's ready !"
+  .cs-error
+  .cs-thanks
+    %p
+      You will be notified when early access will open. See you soon !
