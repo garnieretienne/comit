@@ -7,8 +7,8 @@
         #menu
           = link_to "How it work ?", '#how-it-work'
           = '-'
-          = link_to "Pricing", '#pricing'
-          = '-'
+          / = link_to "Pricing", '#pricing'
+          / = '-'
           = link_to "Sign in with Github", '/auth/github', class: 'focus'
 
     #banner
@@ -25,7 +25,7 @@
           %ul.menu
             %li= link_to 'See an example of blog powered by Comit'
             %li= link_to 'How it work ?', '#how-it-work'
-            %li= link_to "Pricing", '#pricing'
+            / %li= link_to "Pricing", '#pricing'
 
           %a.getting-started{href: '/auth/github'}
             Getting Online !
@@ -87,29 +87,4 @@
 
   %hr
 
-  #pricing.part
-    .content
-      %h1 One simple plan
-
-      #pricing-plan
-        #plan-title
-          Personnal
-        #plan-price
-          $8
-        #plan-per-month
-          each month
-        %ul#featured
-          %li Unmetered number of blogs
-          %li Unmetered traffic
-      #description
-        %h2 
-          %b Free trial
-        %p 
-          You can use Comit for free for 
-          %b 30 days without any credit card or engagment. 
-          At the end of your trial, you will receive an email and will decide if Comit feet your needs or not.
-
-        %a#start{href: '/auth/github'}
-          Authenticate with Github to start publish your blog
-
-  %hr
+  / = render 'welcome/pricing'
