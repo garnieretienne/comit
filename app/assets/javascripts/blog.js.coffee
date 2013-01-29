@@ -1,7 +1,7 @@
 $(document).ready ->
 
   # Display the 'return home' icon when user hover the blog title.
-  $('#header h1').hover ->
+  $('#header a').hover ->
     $('#return-home').fadeIn(50)
   , ->
     $('#return-home').fadeOut(50)

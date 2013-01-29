@@ -158,31 +158,64 @@ body {
     background-image: url('/assets/blackorchid.png');
     color: $white;
     padding: 0.4em;
-    // text-align: center;
-    margin-bottom: 2em;
+    margin-bottom: 4em;
     border-bottom: 6px solid $custom-color;
     
     #return-home {
       float: left;
-      font-size: 1.4em;
+      font-size: 2em;
       display: none;
-      margin-left: 1em;
-      width: 1em;
+      width: $sidebar-width;
+      text-align: right;
+      line-height: 0.8em;
+
+      #logo-back {
+        margin-right: 1.6em;
+      }
     }
 
-    h1 {
-      display: block;
-      font-size: 1.6em;
-      color: $white;
-      margin: 0;
-      font-family: $logo;
+    #bar {
+      overflow: hidden;
       margin-left: $sidebar-width;
       padding-left: $article-margin;
+      max-width: 1000px;
 
-      a, a:link, a:visited, a:active, a:hover {
+      h1#title {
+        display: block;
+        float: left;
+        font-size: 1.6em;
         color: $white;
-        text-decoration: none;
+        margin: 0;
+        font-family: $logo;
+
+        a, a:link, a:visited, a:active, a:hover {
+          color: $white;
+          text-decoration: none;
+        }
       }
+
+      #links {
+        color: $light-grey;
+        font-size: 0.9em;
+        float: right;
+        text-align: right;
+        margin-right: 1em;
+        margin-left: 2em;
+        margin-top: 0.4em;
+        font-style: italic;
+        width: 20em;
+       
+        a, a:link, a:visited, a:active, {
+          color: $white;
+          text-decoration: none;
+          font-weight: bold;
+        }
+       
+        a:hover {
+          text-decoration: underline;
+        }
+      }
+
     }
 
     #sign-in {

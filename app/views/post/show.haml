@@ -1,10 +1,7 @@
 - content_for :title do
   = "#{@post.title} - #{@blog.name}"
 
-#header
-  #return-home ‹
-  %h1
-    = link_to @blog.name, root_url
+= render 'layouts/header', title: link_to(current_blog.name, root_url), links: ''
     
 #sidebar
   #avatars

@@ -28,7 +28,8 @@ class SessionControllerTest < ActionController::TestCase
     assert_equal session['user_id'], users(:one).id
   end
 
-  # Registration is closed for now
+  # >> Registration is closed for now
+  #
   # test "should connect a new user and save it into the database" do
   #   @request.env["omniauth.auth"] = OmniAuth.config.mock_auth[:unregistered]
   #   get :create, provider: 'github'

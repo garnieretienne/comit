@@ -1,39 +1,55 @@
 @import "colors";
 @import "typography";
+@import "vars";
 
 #dashboard {
-  max-width: 600px;
-  margin: auto;
-  padding: 1em;
+  overflow: hidden;
 
-  a {
-    border-bottom:1px dotted black;
+  #left-panel {
+    float: left;
+    width: $sidebar-width;
+
+    #user {
+
+      max-width: 250px;
+      margin: auto;
+
+      p {
+        text-align: center;
+        margin-top: 0;
+      }
+  
+      padding: 1em;
+    }
   }
 
-  header {
-    p {
-      text-align: center;
-      margin-top: 0;
-    }
-  }
+  #right-panel {
+    max-width: 1000px;
+    margin-left: $sidebar-width;
+    padding-left: $article-margin;
 
-  .blog, .form-box {
-    padding: 1em;
-    margin-bottom: 2em;
-    background-color: lighten($light-grey, 6%);
-    border: 2px solid $light-grey;
-    h1 {
-      margin-top: 0;
-      border-bottom: 1px solid $light-grey;
+    a {
+      border-bottom:1px dotted black;
     }
-    code {
-      color: $grey;
-    }
-    hr {
-     border-bottom: 1px dashed darken($light-grey, 6%);
-    }
-    .menu {
-      margin-bottom: 0;
+
+    .blog, .form-box {
+      padding: 1em;
+      margin-bottom: 2em;
+      background-color: lighten($light-grey, 6%);
+      border: 2px solid $light-grey;
+      h1 {
+        margin-top: 0;
+        border-bottom: 1px solid $light-grey;
+      }
+      code {
+        color: $grey;
+      }
+      hr {
+       border-bottom: 1px dashed darken($light-grey, 6%);
+      }
+      .menu {
+        margin-bottom: 0;
+      }
     }
   }
 
